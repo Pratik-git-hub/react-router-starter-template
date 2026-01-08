@@ -13,6 +13,33 @@ export function Welcome({ message }: { message: string }) {
       document.head.removeChild(script);
     };
   }, []);
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      // Send to Cloudflare Worker instead of directly to Salesforce
+      const response = await fetch(
+        "https://react-router-starter-template.pratikcmkulkarni.workers.dev",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        window.location.href =
+          "http://adworks--teamdev.sandbox.lightning.force.com/lightning/page/home";
+      } else {
+        alert("Verification failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
 	return (
 		<main className="flex items-center justify-center pt-16 pb-4">
 			<div className="flex-1 flex flex-col items-center gap-16 min-h-0">
