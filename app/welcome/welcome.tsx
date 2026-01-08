@@ -13,7 +13,7 @@ export function Welcome({ message }: { message: string }) {
       document.head.removeChild(script);
     };
   }, []);
-	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
