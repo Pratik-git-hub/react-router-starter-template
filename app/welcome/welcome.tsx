@@ -28,7 +28,8 @@ export function Welcome({ message }: { message: string }) {
       );
 
       const result = await response.json();
-
+		console.log("result");
+		console.log(result);
       if (result.success) {
         window.location.href =
           "http://adworks--teamdev.sandbox.lightning.force.com/lightning/page/home";
