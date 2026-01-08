@@ -20,7 +20,7 @@ export function Welcome({ message }: { message: string }) {
     try {
       // Send to Cloudflare Worker instead of directly to Salesforce
       const response = await fetch(
-        "https://react-router-starter-template.pratikcmkulkarni.workers.dev",
+        "https://react-router-starter-template.pratikcmkulkarni.workers.dev/api/submit-form",
         {
           method: "POST",
           body: formData,
